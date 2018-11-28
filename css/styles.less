@@ -1,7 +1,21 @@
+// Color Var
 @menu-color:          rgb(239,239,239);
-@bg-color:            rgb(51,51,51);
-@title-color:         rgb(93,93,93);
-@title-color-hover:   rgb(219,10,91);
+@pink-color:          rgb(219,10,91);
+@sidebar-color:       rgb(51,51,51);
+@sidebarchannel-color:rgb(255,255,255);
+
+// Font Color Var
+@font-title-color:    rgb(93,93,93);
+@font-sidebar-color:  rgb(255,255,255);
+
+// Dimension Var
+@menu-height:           7.5vh;
+@sidebar-width:         7.5vh;
+@channel-dim:           5vh;
+
+// Font Var
+@font-title:            'Calibri light', serif;
+@font-channel:          'Trebuchet MS', serif;
 
 html, body {
     width: 100%;
@@ -9,7 +23,6 @@ html, body {
 }
 
 body {
-    background-color: @bg-color;
     font-size: 1em;
     // line-height: 1.4;
     margin: 0px;
@@ -25,7 +38,7 @@ hr {
 }
 
 .nav {
-    height: 7.5%;
+    height: @menu-height;
     background-color: @menu-color;
     box-shadow: 0px 2px 6px gray;
     .img {
@@ -37,8 +50,8 @@ hr {
         .title {
             float: left;
             font-size: 3vh;
-            font-family: 'Calibri light';
-            color: @title-color;
+            font-family: @font-title;
+            color: @font-title-color;
             margin-top: 1.75vh;
             margin-bottom: 2vh;
             margin-left: 2vh;
@@ -46,17 +59,63 @@ hr {
         .menu-btn {
             float: right;
             font-size: 3vh;
-            color: @title-color;
+            color: @font-title-color;
             margin-top: 2vh;
             margin-bottom: 2vh;
             margin-right: 2vh;
             &:hover {
-                color: @title-color-hover;
+                cursor: pointer;
+                color: @pink-color;
             }
         }
     }
 }
 
-.channel {
-    width: 4.6875%;
+.sidebar {
+    position: absolute;
+    background-color: @sidebar-color;
+    width: @sidebar-width;
+    height: 100%;
+    padding-top: 1.25vh;
+    padding-bottom: 1.25vh;
+    .channel {
+        position: static;
+        width: @channel-dim;
+        height: @channel-dim;
+        background-color: @sidebarchannel-color;
+        margin: 0vh 1.25vh 3.75vh 1.25vh;
+        border-radius: 5px;
+        color: @font-sidebar-color;
+        .title {
+            position: relative;
+            top: @channel-dim;
+            text-align: center;
+            font-size: 1.25vh;
+            font-family: @font-channel;
+        }
+        .selected {
+            position: relative;
+            visibility: hidden;
+            border-radius: 50%;
+            width: 1vh;
+            height: 1vh;
+            background: radial-gradient(circle, @pink-color, @sidebar-color);
+            right: 1.75vh;
+        }
+        .chosen {
+            visibility: visible;
+        }
+        &:hover {
+            cursor: pointer;
+            background-color: @pink-color;
+            color: @pink-color;
+        }
+        &:hover .selected,
+        &:hover ~ .selected {
+            visibility: visible;
+        }
+    }
+
+
 }
+
