@@ -1,0 +1,300 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+hr {
+  display: block;
+  height: 2px;
+  width: 80%;
+  border: 0;
+  border-top: 2px solid #efefef;
+  margin: 1em 0;
+  padding: 0;
+}
+.nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 7.5vh;
+  background-color: #efefef;
+  box-shadow: 0px 2px 6px gray;
+  z-index: 100;
+}
+.nav .img {
+  float: left;
+  height: 100%;
+}
+.nav .menu {
+  height: 100%;
+}
+.nav .menu .title {
+  float: left;
+  font-size: 3vh;
+  font-family: 'Calibri light', serif;
+  color: #5d5d5d;
+  margin-top: 1.75vh;
+  margin-bottom: 2vh;
+  margin-left: 2vh;
+}
+.nav .menu .menu-btn {
+  float: right;
+  font-size: 3vh;
+  color: #5d5d5d;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-right: 2vh;
+}
+.nav .menu .menu-btn:hover {
+  cursor: pointer;
+  color: #db0a5b;
+}
+@keyframes left {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: -75px;
+  }
+}
+@keyframes right {
+  0% {
+    left: -75px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+.left {
+  animation-name: left;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+.right {
+  animation-name: right;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+@keyframes smallEmail {
+  0% {
+    left: 0;
+    width: 100%;
+  }
+  100% {
+    left: 7.5vh;
+    width: calc(100% - 7.5vh);
+  }
+}
+@keyframes bigEmail {
+  0% {
+    left: 7.5vh;
+    width: calc(100% - 7.5vh);
+  }
+  100% {
+    left: 0;
+    width: 100%;
+  }
+}
+.smallEmail {
+  animation-name: smallEmail;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+.bigEmail {
+  animation-name: bigEmail;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+@keyframes smallText {
+  0% {
+    width: calc(100% - (1.33 * 7.5vh));
+  }
+  100% {
+    width: calc(100% - (2 * 7.5vh));
+  }
+}
+@keyframes bigText {
+  0% {
+    width: calc(100% - (2 * 7.5vh));
+  }
+  100% {
+    width: calc(100% - (1.33 * 7.5vh));
+  }
+}
+.smallText {
+  animation-name: smallText;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+.bigText {
+  animation-name: bigText;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+.sidebar {
+  position: fixed;
+  background-color: #333333;
+  width: 7.5vh;
+  height: calc(100% - 7.5vh);
+  padding-top: 8.75vh;
+  padding-bottom: 1.25vh;
+}
+.sidebar .channel {
+  position: relative;
+  width: 5vh;
+  height: 5vh;
+  background-color: #ffffff;
+  margin: 0vh 1.25vh 3.75vh 1.25vh;
+  border-radius: 5px;
+  color: #ffffff;
+}
+.sidebar .channel .title {
+  position: relative;
+  top: 5vh;
+  text-align: center;
+  font-size: 1.25vh;
+  font-family: 'Tahoma', serif;
+}
+.sidebar .channel .selected {
+  position: relative;
+  visibility: hidden;
+  border-radius: 50%;
+  width: 1vh;
+  height: 1vh;
+  background: radial-gradient(circle, #db0a5b, #333333);
+  right: 1.75vh;
+}
+.sidebar .channel .chosen {
+  visibility: visible;
+}
+.sidebar .channel:hover {
+  cursor: pointer;
+  background-color: #db0a5b;
+  color: #db0a5b;
+}
+.sidebar .channel:hover .selected,
+.sidebar .channel:hover ~ .selected {
+  visibility: visible;
+}
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  top: 7.5vh;
+  left: 7.5vh;
+  width: calc(100% - 7.5vh);
+  min-height: calc(100% - 7.5vh);
+}
+.container .email-list {
+  flex-grow: 0;
+  border: 1px solid lightgrey;
+  min-width: 25%;
+  max-width: 25%;
+  min-height: 100%;
+}
+.container .email-list .email {
+  text-overflow: clip;
+  min-width: 100%;
+  overflow: hidden;
+  height: 11.25vh;
+  border-bottom: 1px solid lightgrey;
+  box-sizing: border-box;
+  padding: 1vh 1vh 1vh 1vh;
+  background-color: #f1f1f2;
+  font-family: 'Calibri light', serif;
+  font-size: 1.6vh;
+}
+.container .email-list .email:hover {
+  cursor: pointer;
+  background-color: #808080;
+}
+.container .email-list .email .title {
+  font-weight: bold;
+  margin-bottom: 0.25vh;
+}
+.container .email-list .email .triangle {
+  position: absolute;
+  margin-top: calc((11.25vh / 2) - 20px);
+  margin-left: calc(25% - 20px);
+  width: 0;
+  height: 0;
+  border-bottom: 12px solid transparent;
+  /* left arrow slant */
+  border-top: 12px solid transparent;
+  /* right arrow slant */
+  border-right: 12px solid white;
+  /* bottom, add background color here */
+  font-size: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+.container .email-list .email .active {
+  visibility: visible;
+}
+.container .email-list .hidden {
+  display: none;
+}
+.container .email-body {
+  flex-grow: 1;
+}
+.container .email-body .content {
+  margin: 3.5vh 5vh 10% 5vh;
+}
+.container .email-body .content .heading {
+  font-family: 'Calibri light', serif;
+  font-weight: bolder;
+  font-size: 3vh;
+}
+.container .email-body .content .subheading {
+  font-family: 'Calibri light', serif;
+  font-style: italic;
+  font-size: 2.25vh;
+}
+.container .email-body .content .email-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3vh;
+  margin-bottom: 0.5vh;
+}
+.container .email-body .content .email-caption {
+  text-align: center;
+  margin-bottom: 3vh;
+  font-family: 'Calibri light', serif;
+  font-style: italic;
+  font-size: 1.5vh;
+}
+.container .email-body .content .body-opening {
+  float: left;
+  margin-right: 0.75vh;
+  font-size: 6vh;
+  font-family: 'Calibri light', serif;
+  font-weight: bold;
+  line-height: 4vh;
+}
+.container .email-body .content .body-text {
+  margin-top: 1.75vh;
+  margin-bottom: 0;
+  font-family: 'Calibri light', serif;
+  font-size: 1.75vh;
+}
+.container .email-body .textbox {
+  position: fixed;
+  border-top: 1px solid lightgray;
+  bottom: 0;
+  width: 75%;
+  height: 10%;
+  background-color: #ffffff;
+}
+.container .email-body .textbox form input {
+  width: calc(100% - (2 * 7.5vh));
+  margin: 2.5vh 2.5vh 2.5vh 2.5vh;
+  padding: 1.5vh 2.5vh 1.5vh 2.5vh;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  font-size: 2vh;
+}
